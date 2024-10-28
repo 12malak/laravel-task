@@ -37,37 +37,44 @@ class CompaniesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    // Validate the request data
-    $request->validate([
-        'company-name' => 'required|string|max:255',
-        'company-email' => 'required|email|max:255|unique:companies,email',
-        'company-logo' => 'required|image|max:2048',
-        'company-website' => 'required|url',
-    ]);
-
-    try {
-        // Create a new company instance
-        $company = new Companies();
-        $company->name = $request->input('company-name');
-        $company->email = $request->input('company-email');
-        $company->logo = $request->file('company-logo')->store('logos'); // Save the logo file
-        $company->website = $request->input('company-website');
-
-        // Save the company data to the database
-        $company->save();
-
-        // Redirect to the companies index with a success message
-        return redirect()->route('companies.index')->with('success', 'Company created successfully!');
-
-        
-    } catch (QueryException $e) {
-        if ($e->errorInfo[1] === 1062) { // Duplicate entry
-            return redirect()->back()->withInput()->withErrors(['company-email' => 'The email has already been taken.']);
+    {
+        // Validate the request data
+        $request->validate([
+            'company-name' => 'required|string|max:255',
+            'company-email' => 'required|email|max:255|unique:companies,email',
+            'company-logo' => 'required|image|max:2048',
+            'company-website' => 'required|url',
+        ]);
+    
+        try {
+            // Create a new company instance
+            $company = new Companies();
+            $company->name = $request->input('company-name');
+            $company->email = $request->input('company-email');
+            
+            // Store the logo if uploaded
+            if ($request->hasFile('company-logo')) {
+                $logoPath = $request->file('company-logo')->store('logos', 'public'); // Store in storage/app/public/logos
+                $company->logo = $logoPath;
+            }
+            
+            $company->website = $request->input('company-website');
+    
+            // Save the company data to the database
+            $company->save();
+    
+            // Redirect to the companies index with a success message
+            return redirect()->route('companies.index')->with('success', 'Company created successfully!');
+    
+        } catch (\Exception $e) {
+            // Handle specific error codes, such as duplicate entry
+            if ($e instanceof \Illuminate\Database\QueryException && $e->errorInfo[1] === 1062) { // Duplicate entry error code
+                return redirect()->back()->withInput()->withErrors(['company-email' => 'The email has already been taken.']);
+            }
+            return redirect()->back()->withInput()->withErrors(['error' => 'An unexpected error occurred.']);
         }
-        return redirect()->back()->withInput()->withErrors(['error' => 'An unexpected error occurred.']);
     }
-}
+    
 
     /**
      * Display the specified resource.

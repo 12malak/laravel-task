@@ -22,8 +22,10 @@
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Logo</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Website</th>
+                       
+                      
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th> 
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th> 
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -34,15 +36,15 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $employee->company->name ?? 'N/A' }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $employee->email }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $employee->phone }}</td>
+                       
+                       
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            @if($employee->logo) <!-- Check if the logo exists -->
-                                <img src="{{ asset('storage/' . $employee->logo) }}" alt="Logo" class="w-24 h-24 object-cover rounded-full mx-auto"> <!-- Centered Logo -->
-                            @else
-                                <img src="{{ asset('images/default-logo.png') }}" alt="Default Logo" class="w-24 h-24 object-cover rounded-full mx-auto"> <!-- Default Logo -->
-                            @endif
+                            <!-- Edit Link -->
+                            <a href="{{ route('employees.edit', $employee['id']) }}" class="text-blue-600 hover:underline">Edit</a>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            <a href="{{ $employee->website }}" target="_blank" class="text-blue-600 hover:underline">Visit Website</a>
+                            <!-- delete Link -->
+                            <a href="{{ route('employees.edit', $employee['id']) }}" class="text-blue-600 hover:underline">Delete</a>
                         </td>
                     </tr>
                     @endforeach <!-- End the foreach loop -->
