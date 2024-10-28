@@ -6,70 +6,15 @@
         <title>Login</title>
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="{{ asset('css/Login') }}" rel="stylesheet">
+        <link href="{{ asset('css/Login.css') }}" rel="stylesheet">
         <!-- Styles -->
         <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-                background-color: #f3f4f6; /* Light gray background */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh;
-                margin: 0;
-            }
-            .login-container {
-                max-width: 400px;
-                width: 100%;
-                background-color: #fff;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                padding: 2rem;
-            }
-            .form-title {
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #333;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-            .form-field {
-                margin-bottom: 1rem;
-            }
-            .form-label {
-                display: block;
-                font-weight: 600;
-                margin-bottom: 0.5rem;
-                color: #4a5568;
-            }
-            .form-input {
-                width: 100%;
-                padding: 0.5rem;
-                border: 1px solid #cbd5e0;
-                border-radius: 4px;
-                background-color: #edf2f7;
-            }
-            .form-input:focus {
-                border-color: #9333ea;
-                outline: none;
-            }
-            .submit-btn {
-                width: 100%;
-                padding: 0.75rem;
-                background-color:#c084fc;
-                color: #fff;
-                border: none;
-                border-radius: 4px;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-               
-            }
-            .submit-btn:hover {
-                background-color: #9333ea;
-            }
+           
         </style>
     </head>
     <body>
+    <div class="flex-wrapper">
         <div class="login-container">
             <div class="form-title">Login</div>
             <!-- Form starts here -->
@@ -94,6 +39,7 @@
                 </div>
             </form>
             <!-- Form ends here -->
+        </div>
         </div>
     </body>
 </html>

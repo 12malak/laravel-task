@@ -36,7 +36,7 @@
 
         .content {
             text-align: center;
-            padding: 2rem;
+            
         }
     </style>
 </head>
@@ -44,8 +44,8 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="{{ route('employees') }}">Employees</a>
-        <a href="{{ route('companies') }}">Companies</a>
+        <a href="{{ route('employees.index') }}">Employees</a>
+        <a href="{{ route('companies.index') }}">Companies</a>
     </nav>
 
     <!-- Main Content -->

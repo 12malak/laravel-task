@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouterController;
+use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\EmployeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,10 @@ use App\Http\Controllers\RouterController;
 */
 
 Route::get('/', [RouterController::class, 'index']);
-Route::get('/companies', [RouterController::class, 'companies'])->name('companies');
-Route::get('/employees', [RouterController::class, 'employees'])->name('employees');
+// Route::get('/companies', [RouterController::class, 'companies'])->name('companies');
+// Route::get('/employees', [RouterController::class, 'employees'])->name('employees');
+
+
+
+Route::resource('companies', CompaniesController::class);
+Route::resource('employees', EmployeController::class);
