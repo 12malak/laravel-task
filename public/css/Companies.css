@@ -1,0 +1,36 @@
+h1 {
+    color: #4A5568; /* Gray-700 */
+}
+
+table {
+    border-collapse: collapse; /* Ensures that table borders are collapsed */
+    width: 100%; /* Full width */
+}
+
+th, td {
+    border: 1px solid #E2E8F0; /* Gray-300 border */
+    padding: 12px; /* Padding for table cells */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #F7FAFC; /* Gray-50 background */
+    color: #2D3748; /* Gray-800 text color */
+}
+
+tr:nth-child(even) {
+    background-color: #F9FAFB; /* Gray-100 for even rows */
+}
+
+tr:hover {
+    background-color: #EDF2F7; /* Gray-200 on hover */
+}
+
+/* Additional styles for links */
+a {
+    text-decoration: none; /* Remove underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
