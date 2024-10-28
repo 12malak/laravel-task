@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employe;
 use App\Models\Companies;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeController extends Controller
 {
@@ -14,11 +15,12 @@ class EmployeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
     public function index()
     {
-        return view('employees.index', ['employees' => Employe::all()]);
-    } 
-
+        $employees = Employe::paginate(10); // Fetch 10 employees per page
+        return view('employees.index', compact('employees'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -92,22 +94,50 @@ class EmployeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+   
     public function edit($id)
     {
-        //
+        $employe = Employe::findOrFail($id); // Find the employee by ID
+        $companies = Companies::all(); // Fetch all companies
+        return view('employees.edit', compact('employe', 'companies')); // Pass both to the view
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function update(Request $request, $id)
-    {
-        //
+{
+    // Validate the request data
+    $request->validate([
+        'first_name' => 'required|string|max:255',
+        'last_name' => 'required|string|max:255',
+        'company_id' => 'required|exists:companies,id',
+        'email' => 'nullable|email|max:255|unique:employees,email,' . $id,
+        'phone' => 'nullable|string|max:15',
+    ]);
+
+    try {
+        $employe = Employe::findOrFail($id); // Retrieve the employee by ID
+        // Update the employee's details
+        $employe->first_name = $request->first_name;
+        $employe->last_name = $request->last_name;
+        $employe->company_id = $request->company_id;
+        $employe->email = $request->email;
+        $employe->phone = $request->phone;
+
+        // Save the updated employee data
+        $employe->save();
+
+        // Redirect to the employees index with a success message
+        return redirect()->route('employees.index')->with('success', 'Employee updated successfully!');
+    } catch (QueryException $e) {
+        if ($e->errorInfo[1] === 1062) { // Duplicate entry error code
+            return redirect()->back()->withInput()->withErrors(['company-email' => 'The email has already been taken.']);
+        }
+        
+        // General error handling
+        return redirect()->back()->withInput()->withErrors(['error' => 'An unexpected error occurred.']);
     }
+}
+
 
     /**
      * Remove the specified resource from storage.

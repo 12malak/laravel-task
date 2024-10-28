@@ -50,7 +50,7 @@
 
     <!-- Main Content -->
     <div class="content">
-        <h1>Welcome to the Dashboard</h1>
+       
        
         @yield('content')
     </div>
