@@ -39,6 +39,23 @@
             text-align: center;
             
         }
+        .logout-form {
+            display: inline;
+        }
+
+        .logout-button {
+            color: #ffffff;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .logout-button:hover {
+            color: #f0abfc;
+        }
     </style>
 </head>
 <body>
@@ -47,6 +64,10 @@
     <nav class="navbar">
         <a href="{{ route('employees.index') }}">Employees</a>
         <a href="{{ route('companies.index') }}">Companies</a>
+        <form action="{{ route('logout') }}" method="POST" class="logout-form">
+            @csrf
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
     </nav>
 
     <!-- Main Content -->

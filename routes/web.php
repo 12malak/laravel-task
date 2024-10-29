@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouterController;
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\LoginController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\EmployeController;
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,18 @@ Route::get('/', [RouterController::class, 'index']);
 // Route::get('/companies', [RouterController::class, 'companies'])->name('companies');
 // Route::get('/employees', [RouterController::class, 'employees'])->name('employees');
 
+
+
+
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('companies', [CompaniesController::class, 'index'])->name('companies.index');
+    Route::get('employees', [EmployeController::class, 'index'])->name('employees.index');
+});
+
+
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::resource('companies', CompaniesController::class);
