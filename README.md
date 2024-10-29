@@ -1,66 +1,34 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Project: Admin Panel for Managing Companies and Employees (Mini-CRM)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Description:
+This project is a web-based admin panel built with Laravel, designed to manage companies and their employees. It acts as a mini-CRM, allowing for efficient data management and administrative control over company and employee records.
 
-## About Laravel
+Main Features Implemented:
+- **Basic Authentication**: Utilizes Laravel’s built-in authentication for secure login access. Admin login is enabled, while registration functionality has been removed for security.
+- **Database Seeding**: Created an initial administrator user with email `admin@admin.com` and password `password` via database seeding for secure admin access.
+- **CRUD Operations**: Fully implemented Create, Read, Update, and Delete functionality for managing both companies and employees.
+- **Database Design**:
+  - **Companies**: Fields include Name (required), Email, Logo (minimum 100x100), and Website.
+  - **Employees**: Fields include First Name (required), Last Name (required), Company (foreign key to Companies), Email, and Phone.
+- **Storage and Accessibility**:
+  - Company logos are stored in the `storage/app/public` folder and are accessible from the public directory, ensuring logos meet minimum size requirements.
+- **Resource Controllers**: Used Laravel resource controllers for efficient and RESTful handling of CRUD operations on both Companies and Employees.
+- **Data Validation**: Laravel’s validation functions are applied using Request classes to ensure data integrity and enforce field requirements.
+- **Pagination**: Both Companies and Employees lists display 10 records per page using Laravel's pagination for manageable data viewing.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Accomplishments:
+- Authentication and admin-only access are set up.
+- Created initial database structure using migrations, ensuring well-defined schemas.
+- Successfully implemented CRUD functionality for both Companies and Employees.
+- Validation, file storage, and public accessibility for company logos are operational.
+- Basic Laravel theme configured for a user-friendly admin interface.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The project is ready for further enhancements, such as more advanced role management or additional features for handling and displaying employee and company data.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+How It Works:
+1. Admins log in using their credentials.
+2. Once logged in, admins can view, create, update, or delete records in both the Companies and Employees sections.
+3. Logos are uploaded to a secure location and displayed in the UI.
+4. Data lists are paginated to show 10 records per page for easy navigation.
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This mini-CRM serves as a foundational admin tool, allowing administrators to manage companies and employees in an organized and secure environment.
