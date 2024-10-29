@@ -143,14 +143,24 @@ public function edit($id)
     }
     
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        try {
+            $company = Companies::findOrFail($id); 
+            
+            // Optionally delete the logo from storage
+            if ($company->logo) {
+                Storage::disk('public')->delete($company->logo);
+            }
+            
+            $company->delete(); // Delete the company
+            
+            // Redirect to the companies index with a success message
+            return redirect()->route('companies.index')->with('success', 'Company deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'An unexpected error occurred while deleting the company.']);
+        }
     }
+    
 }

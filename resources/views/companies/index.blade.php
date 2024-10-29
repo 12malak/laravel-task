@@ -42,7 +42,12 @@
                             <a href="{{ route('companies.edit', $company['id']) }}" class="text-blue-600 hover:underline">Edit</a>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            <a href="{{ route('companies.edit', $company['id']) }}" class="text-blue-600 hover:underline">Delete</a>
+                             <!-- Delete Button -->
+                             <form action="{{ route('companies.destroy', $company->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="Delete-btn" onclick="return confirm('Are you sure you want to delete this company?');">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

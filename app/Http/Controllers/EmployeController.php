@@ -139,14 +139,19 @@ class EmployeController extends Controller
 }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+   
+public function destroy($id)
+{
+    try {
+        $employe = Employe::findOrFail($id); // Find the employee by ID
+        $employe->delete(); // Delete the employee
+
+        // Redirect to the employees index with a success message
+        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully!');
+    } catch (QueryException $e) {
+        // General error handling
+        return redirect()->back()->withErrors(['error' => 'An unexpected error occurred while deleting the employee.']);
     }
+}
+
 }
