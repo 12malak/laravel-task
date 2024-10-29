@@ -31,4 +31,8 @@ How It Works:
 3. Logos are uploaded to a secure location and displayed in the UI.
 4. Data lists are paginated to show 10 records per page for easy navigation.
 
+# Database Setup
+To set up the database for this project, download the database file from this link and import it into your local MySQL environment:
+[Download Database](https://drive.google.com/file/d/1VrFabnPrjinwDHmOp-zHzHgex6WgiGei/view?usp=sharing)
+
 This mini-CRM serves as a foundational admin tool, allowing administrators to manage companies and employees in an organized and secure environment.
