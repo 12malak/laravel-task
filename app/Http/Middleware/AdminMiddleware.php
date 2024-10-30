@@ -11,7 +11,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
-            return redirect('companies'); // Redirect to the companies or a forbidden page
+            return redirect('/'); 
         }
 
         return $next($request);
