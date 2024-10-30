@@ -23,17 +23,15 @@ Route::get('/', [RouterController::class, 'index']);
 
 
 
-
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('companies', [CompaniesController::class, 'index'])->name('companies.index');
-    Route::get('employees', [EmployeController::class, 'index'])->name('employees.index');
+    Route::resource('companies', CompaniesController::class);
+    Route::resource('employees', EmployeController::class);
 });
-
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::resource('companies', CompaniesController::class);
-Route::resource('employees', EmployeController::class);
+// Route::resource('companies', CompaniesController::class);
+// Route::resource('employees', EmployeController::class);
