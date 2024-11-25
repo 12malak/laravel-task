@@ -22,7 +22,7 @@ class LoginController extends Controller
         // Attempt to log the user in
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
            
-            return redirect()->intended('companies'); 
+            return redirect()->intended('home'); 
         }
 
         return back()->withErrors([

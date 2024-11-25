@@ -56,14 +56,24 @@
         .logout-button:hover {
             color: #f0abfc;
         }
+        .footer {
+    background: #581c87;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.8rem;
+  }
+  
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar">
+    <a href="{{ route('home.index') }}">Home</a>
         <a href="{{ route('employees.index') }}">Employees</a>
         <a href="{{ route('companies.index') }}">Companies</a>
+    
         <form action="{{ route('logout') }}" method="POST" class="logout-form">
             @csrf
             <button type="submit" class="logout-button">Logout</button>
@@ -77,5 +87,10 @@
         @yield('content')
     </div>
 
+    <footer class="footer">
+    <div class="container">
+      <p>© 2024 Mini-CRM Admin Panel. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

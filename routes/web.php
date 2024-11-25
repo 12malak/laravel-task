@@ -6,6 +6,8 @@ use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +28,7 @@ Route::get('/', [RouterController::class, 'index']);
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::resource('companies', CompaniesController::class);
     Route::resource('employees', EmployeController::class);
+    Route::resource('home', HomeController::class);
 });
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');

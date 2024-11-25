@@ -1,0 +1,164 @@
+/* Hero Slider Styles */
+.hero-slider .container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: 700px;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .description-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the box */
+    background: rgba(237, 215, 240, 0.6); /* Semi-transparent black background */
+    color: #0a0909;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .description-box h1 {
+    font-size: 2rem;
+    margin: 0 0 15px;
+  }
+  
+  .description-box p {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+  /* Company Requirements Section */
+.company-requirements {
+    padding: 60px ;
+    background-color: #f4f4f4;
+  }
+  
+  .company-requirements .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .requirements-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .description {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 20px;
+  }
+  
+  .description h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  .image {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .add-company-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    background-color: #9333ea; /* Tailwind's blue-600 */
+    border: 2px solid #c084fc; /* Matching border color */
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .add-company-link:hover {
+    background-color: #c084fc;  /* Tailwind's blue-700 */
+    border-color:#9333ea;
+    cursor: pointer;
+  }
+  
+  .add-company-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #c084fc; /* Tailwind's focus ring */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .company-requirements .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .requirements-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .description,
+    .image {
+      max-width: 100%;
+    }
+  
+    .description {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  
+    .description h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .description-box {
+      max-width: 400px;
+      padding: 20px;
+    }
+  
+    .description-box h1 {
+      font-size: 1.5rem;
+    }
+  
+    .description-box p {
+      font-size: 0.9rem;
+    }
+  }
